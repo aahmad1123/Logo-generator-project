@@ -33,9 +33,13 @@ function init() {
         console.log(data)
         let logoShape;
         if(data.shape === "circle"){
-            logoShape = new Circle()
+            logoShape = new Circle();
         }
-        //else if
+        else if (data.shape === "triangle"){
+            logoShape = new Triangle();
+        } else {
+            logoShape = new Square();
+        }
 
         logoShape.setColor(data.shapreColor)
 
