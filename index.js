@@ -1,6 +1,7 @@
 const inquirer = require('inquirer')
 const fs = require('fs')
-const generateShapes = require("./lib/shapes")
+const {Circle, Triangle, Square} = require("./lib/shapes");
+const { log } = require('console');
 
 const questions = [
     {
@@ -22,7 +23,7 @@ const questions = [
     },
     {
         type: "input",
-        name: "shape color",
+        name: "shapeColor",
         message: "Enter a color keyword or hexidecimal."
     }
 ];
@@ -30,7 +31,18 @@ const questions = [
 function init() {
     inquirer.prompt(questions).then(data =>{
         console.log(data)
-        fs.writeFile("logo.svg", generateShapes);
+        let logoShape;
+        if(data.shape === "circle"){
+            logoShape = new Circle()
+        }
+        //else if
+
+        logoShape.setColor(data.shapreColor)
+
+
+
+        //fs.writeFile("logo.svg", generateShapes);
+
     })
     .then((console.log("Generate logo.svg")));
 }
