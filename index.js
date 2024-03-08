@@ -2,7 +2,7 @@ const inquirer = require('inquirer')
 const fs = require('fs')
 const {Circle, Triangle, Square} = require("./lib/shapes");
 
-
+// inquirer questions that take in data to feed to rendering output
 const questions = [
     {
         type: "input",
@@ -28,6 +28,7 @@ const questions = [
     }
 ];
 
+// function that takes data from inquirer and pumps out image. If statements handle the variable choice of shape
 function init() {
     inquirer.prompt(questions).then(data =>{
         console.log(data)
@@ -41,7 +42,7 @@ function init() {
             logoShape = new Square(data.shapeColor) // ''
         }
      
-      
+    //   variable that actually outputs the shape and is taken in by write file function.
         let svgTag = `
         <svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
         ${logoShape.render()}
